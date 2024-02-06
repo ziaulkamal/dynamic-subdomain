@@ -10,6 +10,6 @@ class SubdomainController extends Controller
     {
 
 
-        return view('subdomain.show');
+        return view('show');
     }
 }
