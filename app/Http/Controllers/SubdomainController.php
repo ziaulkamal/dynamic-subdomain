@@ -21,7 +21,7 @@ class SubdomainController extends Controller
     protected function getSubdomain()
     {
         // Mendapatkan subdomain dari request
-        $subdomain = explode('.', $request->getHost())[0];
+        $subdomain = explode('.', request()->getHost())[0];
 
         // Jika subdomain kosong, set sebagai 'default'
         return $subdomain ?: 'default';
