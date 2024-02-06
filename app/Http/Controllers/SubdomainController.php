@@ -13,7 +13,13 @@ class SubdomainController extends Controller
             return view('show', compact('subdomain'));
         }
 
-        // Jika tidak ada subdomain, tampilkan posisi sekarang
+        // Jika tidak ada subdomain, coba ambil dari parameter query
+        $subdomainFromQuery = $request->query('subdomain');
+        if ($subdomainFromQuery) {
+            return view('show', compact('subdomainFromQuery'));
+        }
+
+        // Jika tidak ada subdomain dari query, tampilkan posisi sekarang
         $currentSubdomain = $this->getSubdomain($request);
         return view('show', compact('currentSubdomain'));
     }
