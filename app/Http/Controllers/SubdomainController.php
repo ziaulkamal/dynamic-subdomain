@@ -8,7 +8,11 @@ class SubdomainController extends Controller
 {
     public function showSubdomain()
     {
-        return view('show');
+        // Mengambil subdomain dari request
+        $subdomain = $this->getSubdomain();
+
+        // Menampilkan view dengan informasi subdomain
+        return view('show', compact('subdomain'));
     }
 
     public function processQuery(Request $request)
@@ -20,6 +24,15 @@ class SubdomainController extends Controller
         $subdomain = str_replace(' ', '-', $query);
 
         // Redirect ke subdomain dengan query
-        return redirect($subdomain.url());
+        return redirect()->route('subdomain.show', ['subdomain' => $subdomain]);
+    }
+
+    protected function getSubdomain()
+    {
+        // Mengambil subdomain dari request
+        $subdomain = explode('.', request()->getHost())[0];
+
+        // Jika subdomain kosong, set sebagai 'default'
+        return $subdomain ?: 'default';
     }
 }
