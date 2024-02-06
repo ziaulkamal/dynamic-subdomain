@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 
 Route::get('/', [SubdomainController::class, 'showSubdomain']);
+Route::post('/', [SubdomainController::class, 'processQuery']);
