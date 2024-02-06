@@ -1,11 +1,14 @@
+<!-- resources/views/show.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Input Query</title>
+    <title>Show Subdomain</title>
 </head>
 <body>
+    <h1>Informasi Subdomain:</h1>
 
     @if (isset($subdomain))
         <p>Subdomain Sekarang: {{ $subdomain }}</p>
@@ -13,18 +16,15 @@
         <p>URL Sekarang: {{ url('/') }}</p>
     @endif
 
-    <h1>Form Input Query</h1>
+    @if (isset($subdomain))
+        <p><a href="{{ route('root') }}">Kembali ke Root</a></p>
+    @endif
 
-    <form action="{{ route('process.query') }}" method="POST">
+    <form action="{{ route('process.query.post') }}" method="POST">
         @csrf
         <label for="query">Masukkan Query:</label>
         <input type="text" id="query" name="query" placeholder="Contoh: subdomain1" required>
         <button type="submit">Submit</button>
     </form>
-
-    @if (request()->has('query'))
-        <p>Hasil Query: {{ request()->query('query') }}</p>
-        <p>URL Sekarang: {{ url('/') }}</p>
-    @endif
 </body>
 </html>

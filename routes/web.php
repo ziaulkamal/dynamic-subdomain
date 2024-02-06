@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('root');
 Route::get('/{subdomain}', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
-Route::post('/process-query', [SubdomainController::class, 'processQuery'])->name('process.query');
+Route::post('/process-query', [SubdomainController::class, 'processQuery'])->name('process.query.post');
 
