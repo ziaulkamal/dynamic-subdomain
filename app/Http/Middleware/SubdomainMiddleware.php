@@ -7,15 +7,19 @@ use Illuminate\Http\Request;
 
 class SubdomainMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
+        $subdomain = $request->query('subdomain');
+
+        if ($subdomain) {
+            // Lakukan sesuatu dengan subdomain, misalnya simpan ke database
+            // atau terapkan konfigurasi berdasarkan subdomain
+            // Pastikan untuk memvalidasi subdomain dengan baik
+
+            // Contoh: Set subdomain ke environment agar dapat diakses di aplikasi
+            config(['app.subdomain' => $subdomain]);
+        }
+
         return $next($request);
     }
 }

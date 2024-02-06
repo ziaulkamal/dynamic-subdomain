@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SubdomainController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['web', 'subdomain'])->group(function () {
+    // Rute-rute Anda di sini
+    Route::get('/', [SubdomainController::class, 'showSubdomain']);
+});
+
