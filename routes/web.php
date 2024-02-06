@@ -19,8 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['web', 'subdomain'])->group(function () {
-    // Rute-rute Anda di sini
-    Route::get('/', [SubdomainController::class, 'showSubdomain']);
-});
 
+
+Route::get('/', [SubdomainController::class, 'showSubdomain']);
