@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SubdomainMiddleware
 {
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
     $subdomain = $request->query('subdomain', 'default');
 
