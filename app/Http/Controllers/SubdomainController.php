@@ -6,31 +6,22 @@ use Illuminate\Http\Request;
 
 class SubdomainController extends Controller
 {
-    public function showSubdomain()
+    public function showSubdomain(Request $request, $subdomain = null)
     {
-        // Mengambil subdomain dari request
-        $subdomain = $this->getSubdomain();
+        // Jika ada subdomain, tampilkan view subdomain
+        if ($subdomain) {
+            return view('show', compact('subdomain'));
+        }
 
-        // Menampilkan view dengan informasi subdomain
-        return view('show', compact('subdomain'));
-    }
-
-    public function processQuery(Request $request)
-    {
-        // Ambil nilai query dari form
-        $query = $request->input('query');
-
-        // Ganti spasi dengan tanda hubung
-        $subdomain = str_replace(' ', '-', $query);
-
-        // Redirect ke subdomain dengan query
-        return redirect()->route('subdomain.show', ['subdomain' => $subdomain]);
+        // Jika tidak ada subdomain, tampilkan posisi sekarang
+        $currentSubdomain = $this->getSubdomain();
+        return view('show', compact('currentSubdomain'));
     }
 
     protected function getSubdomain()
     {
-        // Mengambil subdomain dari request
-        $subdomain = explode('.', request()->getHost())[0];
+        // Mendapatkan subdomain dari request
+        $subdomain = explode('.', $request->getHost())[0];
 
         // Jika subdomain kosong, set sebagai 'default'
         return $subdomain ?: 'default';

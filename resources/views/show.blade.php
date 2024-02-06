@@ -6,6 +6,13 @@
     <title>Form Input Query</title>
 </head>
 <body>
+
+    @if (isset($subdomain))
+        <p>Subdomain Sekarang: {{ $subdomain }}</p>
+    @else
+        <p>URL Sekarang: {{ url('/') }}</p>
+    @endif
+
     <h1>Form Input Query</h1>
 
     <form action="{{ route('process.query') }}" method="POST">
