@@ -6,6 +6,6 @@
     <title>Show Subdomain</title>
 </head>
 <body>
-    <h1>Subdomain: {{ $subdomain }}</h1>
+     <p>URL Sekarang: {{ url()->current() }}</p>
 </body>
 </html>
