@@ -14,7 +14,7 @@ class SubdomainController extends Controller
         }
 
         // Jika tidak ada subdomain, tampilkan posisi sekarang
-        $currentSubdomain = $this->getSubdomain();
+        $currentSubdomain = $this->getSubdomain($request);
         return view('show', compact('currentSubdomain'));
     }
 
@@ -30,7 +30,7 @@ class SubdomainController extends Controller
         return redirect()->route('subdomain.show', ['subdomain' => $subdomain]);
     }
 
-    protected function getSubdomain()
+    protected function getSubdomain(Request $request)
     {
         // Mendapatkan subdomain dari request
         $subdomain = explode('.', $request->getHost())[0];
