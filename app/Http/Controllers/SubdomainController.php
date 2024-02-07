@@ -85,7 +85,7 @@ class SubdomainController extends Controller
         ];
 
         // Set API Key
-        $apiKey = "YOUR_API_KEY";
+        $apiKey = "AIzaSyDxNHLoyaBLdmS5odu_oO7gSXB_cVmubU0";
 
         // URL API
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" . $apiKey;
