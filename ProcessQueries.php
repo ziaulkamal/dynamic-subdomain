@@ -114,5 +114,5 @@ foreach ($queries as $query) {
 
     // Hapus query dari penyimpanan sementara
         DB::table('queries')->where('id', $query->id)->delete();
-        return 'berhasil di proses id :' . $query->id;
+        echo 'berhasil di proses id :' . $query->id;
 }
