@@ -102,7 +102,7 @@ class SubdomainController extends Controller
             $responseData = json_decode($response, true);
 
             // Simpan hasil query di localStorage melalui cookie
-            cookie('storedResult', $responseData['generatedContent'], 60); // Simpan dalam cookie selama 60 menit
+            // cookie('storedResult', $responseData['generatedContent'], 60); // Simpan dalam cookie selama 60 menit
 
             // Kirim hasil sebagai variabel ke blade show
             return view('show', compact('subdomain', 'responseData', 'query'));
