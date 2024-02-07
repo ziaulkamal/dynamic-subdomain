@@ -13,7 +13,7 @@ $queries = Query::all();
 foreach ($queries as $query) {
     // Lakukan sesuatu dengan query (contoh: panggil metode di SubdomainController)
     // Pastikan bahwa 'subdomain.processQuery' adalah route yang benar
-    \Illuminate\Support\Facades\Http::post(route('subdomain.processQuery'), ['query' => $query->query]);
+    // \Illuminate\Support\Facades\Http::post(route('subdomain.processQuery'), ['query' => $query->query]);
 
         $getQuery = $query->query;
            // Ganti spasi dengan tanda hubung
