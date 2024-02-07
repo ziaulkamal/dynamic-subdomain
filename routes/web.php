@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
-    Route::get('/', 'SubdomainController@showSubdomain')->name('subdomain.show');
+    Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
     // Tambahkan rute-rute lainnya jika diperlukan
 });
+
