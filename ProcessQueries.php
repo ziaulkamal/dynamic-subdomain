@@ -1,14 +1,14 @@
 <?php
 use Illuminate\Support\Facades\DB;
+use App\Models\Query;
 
 // Load Laravel
 require_once __DIR__.'/vendor/autoload.php';
 $app = require_once __DIR__.'/bootstrap/app.php';
 $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
-
 // Ambil query dari penyimpanan sementara (contoh: menggunakan tabel 'queries')
-$queries = DB::table('queries')->get();
-
+// $queries = DB::table('queries')->get();
+$queries = Query::all();
 // Proses setiap query
 foreach ($queries as $query) {
     // Lakukan sesuatu dengan query (contoh: panggil metode di SubdomainController)
