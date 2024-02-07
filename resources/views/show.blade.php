@@ -58,7 +58,7 @@
             var subdomain = urlParts[0];
             var rootDomain = urlParts.length > 2 ? urlParts[1] + '.' + urlParts[2] : urlParts[0];
             // Persiapkan path untuk file JSON
-            var jsonFilePath = protocol +rootDomain+'/responses/' + subdomain + '.json';
+            var jsonFilePath = protocol +rootDomain + 'responses/' + subdomain + '.json';
 
             // Menggunakan AJAX untuk memuat file JSON
             var xhr = new XMLHttpRequest();
