@@ -32,7 +32,21 @@ class SubdomainController extends Controller
         // Simpan nilai query di session
         $request->session()->put('storedQuery', $query);
 
-        // Persiapkan data untuk dikirim ke API
+        // Persiapkan path untuk file JSON
+        $jsonFilePath = public_path("responses/{$subdomain}.json");
+
+        // Cek apakah file JSON sudah ada
+        if (File::exists($jsonFilePath)) {
+            // Jika sudah ada, baca isi file JSON dan tampilkan teks
+            $jsonContent = File::get($jsonFilePath);
+            $responseData = json_decode($jsonContent, true);
+            $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
+
+            // Kirim hasil sebagai variabel ke blade show
+            return view('show', compact('subdomain', 'text', 'query'));
+        }
+
+        // Jika file JSON belum ada, jalankan permintaan API
         $apiData = [
             "contents" => [
                 [
@@ -71,7 +85,7 @@ class SubdomainController extends Controller
         ];
 
         // Set API Key
-        $apiKey = "AIzaSyDxNHLoyaBLdmS5odu_oO7gSXB_cVmubU0";
+        $apiKey = "YOUR_API_KEY";
 
         // URL API
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" . $apiKey;
@@ -102,18 +116,14 @@ class SubdomainController extends Controller
             // Berhasil mendapatkan response
             $responseData = json_decode($response, true);
 
-            // Simpan hasil query dalam file JSON di direktori public/responses
-            $directoryPath = public_path("responses");
+            // Simpan hasil query dalam file JSON
+            File::put($jsonFilePath, json_encode($responseData));
 
-            // Membuat direktori jika belum ada
-            File::makeDirectory($directoryPath, 0755, true, true);
-
-            // Menyimpan file JSON
-            $filePath = "{$directoryPath}/{$subdomain}.json";
-            File::put($filePath, json_encode($responseData));
+            // Ambil teks dari hasil response
+            $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
 
             // Kirim hasil sebagai variabel ke blade show
-            return view('show', compact('subdomain', 'responseData', 'query'));
+            return view('show', compact('subdomain', 'text', 'query'));
         }
 
         // Tutup koneksi cURL
