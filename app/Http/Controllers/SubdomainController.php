@@ -27,9 +27,18 @@ class SubdomainController extends Controller
         // Ganti spasi dengan tanda hubung
         $subdomain = Str::slug($query);
 
+        // Simpan nilai query di session
+        $request->session()->put('storedQuery', $query);
+
+        // Lakukan proses query
+        $result = $this->processQueryLogic($query);
+
+        // Simpan hasil query di localStorage melalui cookie
+        cookie('storedResult', $result, 60); // Simpan dalam cookie selama 60 menit
+
         // Jika tidak ada subdomain dari root domain, atur sebagai default
         $currentSubdomain = $request->subdomain ?: 'default';
-        // dd($currentSubdomain);
+
         // Redirect ke subdomain dengan query
         return redirect()->route('subdomain.show', ['subdomain' => $subdomain ?: $currentSubdomain]);
     }

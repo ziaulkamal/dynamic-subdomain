@@ -24,4 +24,19 @@
         <button type="submit">Submit</button>
     </form>
 </body>
+
+<script>
+    // Ambil nilai hasil query dari localStorage saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function () {
+        var storedResult = localStorage.getItem('storedResult');
+        if (storedResult) {
+            document.getElementById('result').innerText = storedResult;
+        }
+    });
+
+    // Fungsi untuk menyimpan hasil query ke localStorage
+    function saveResult(result) {
+        localStorage.setItem('storedResult', result);
+    }
+</script>
 </html>
