@@ -35,12 +35,12 @@ class SubdomainController extends Controller
         // Persiapkan path untuk file JSON
         $jsonFilePath = public_path("responses/{$subdomain}.json");
 
-            // Cek apakah file JSON sudah ada
+        // Cek apakah file JSON sudah ada
         if (File::exists($jsonFilePath)) {
             // Jika sudah ada, baca isi file JSON dan tampilkan teks
             $jsonContent = File::get($jsonFilePath);
             $responseData = json_decode($jsonContent, true);
-            $text = data_get($responseData, 'candidates.0.content.parts.0.text');
+            $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
 
             // Kirim hasil sebagai variabel ke blade show
             return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
