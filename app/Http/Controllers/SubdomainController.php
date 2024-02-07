@@ -27,8 +27,11 @@ class SubdomainController extends Controller
         // Ganti spasi dengan tanda hubung
         $subdomain = Str::slug($query);
 
+        // Jika tidak ada subdomain dari root domain, atur sebagai default
+        $currentSubdomain = $request->subdomain ?: 'default';
+
         // Redirect ke subdomain dengan query
-        return redirect()->route('subdomain.show', ['subdomain' => $subdomain]);
+        return redirect()->route('subdomain.show', ['subdomain' => $subdomain ?: $currentSubdomain]);
     }
 
 
