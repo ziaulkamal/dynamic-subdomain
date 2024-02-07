@@ -18,7 +18,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://coba-dulu-ges.blogspot.com/'],
+    'allowed_origins' => ['https://coba-dulu-ges.blogspot.com/','https://ziaulkamalofficial.blogspot.com/'],
 
     'allowed_origins_patterns' => [],
 
