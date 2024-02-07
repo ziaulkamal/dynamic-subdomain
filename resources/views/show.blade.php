@@ -11,7 +11,7 @@
     <h1>Informasi Subdomain:</h1>
 
     @if (isset($subdomain))
-        <p>Subdomain Sekarang: {{ $subdomain }}</p>
+        <p>URL Sekarang: {{ url()->current() }}</p>
     @else
         <p>URL Sekarang: {{ url('/') }}</p>
     @endif
