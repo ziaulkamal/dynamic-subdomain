@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class BlogspotApiController extends Controller
 {
@@ -14,10 +13,7 @@ class BlogspotApiController extends Controller
 
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
 
-        // Kirim permintaan ke SubdomainController
-        $response = Http::post(route('subdomain.processQuery'), $data);
-
         // Berikan respons
-        return $response->json();
+        return response()->json(['message' => $data]);
     }
 }

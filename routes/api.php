@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
     Route::post('/blogspot-endpoint', [BlogspotApiController::class, 'handleRequest']);
+
 });
