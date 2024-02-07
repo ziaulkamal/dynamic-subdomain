@@ -1,5 +1,3 @@
-<!-- resources/views/show.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +14,13 @@
         <p>URL Sekarang: {{ url('/') }}</p>
     @endif
 
+    <!-- Tambahkan hasil query di sini -->
+    @if (isset($responseData['generatedContent']))
+        <h2>Hasil Query:</h2>
+        <pre>{{ $responseData['generatedContent'] }}</pre>
+    @else
+        <p>Terjadi kesalahan dalam mendapatkan hasil dari API.</p>
+    @endif
 
     <form action="{{ route('process.query.post') }}" method="POST">
         @csrf
@@ -23,33 +28,5 @@
         <input type="text" id="query" name="query" placeholder="Contoh: subdomain1" required>
         <button type="submit">Submit</button>
     </form>
-    <script>
-    // Ambil nilai bookmark dari localStorage saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', function () {
-        var storedBookmark = localStorage.getItem('storedBookmark');
-        if (storedBookmark) {
-            document.getElementById('bookmark').value = storedBookmark;
-        }
-
-        // Ambil hasil query terakhir dari localStorage
-        var storedResult = localStorage.getItem('storedResult');
-        if (storedResult) {
-            document.getElementById('result').innerText = storedResult;
-        }
-    });
-
-    // Fungsi untuk menyimpan bookmark ke localStorage
-    function saveBookmark() {
-        var bookmark = document.getElementById('bookmark').value;
-        localStorage.setItem('storedBookmark', bookmark);
-    }
-
-    // Fungsi untuk menyimpan hasil query terakhir ke localStorage
-    function saveResult(result) {
-        localStorage.setItem('storedResult', result);
-    }
-</script>
 </body>
-
-
 </html>
