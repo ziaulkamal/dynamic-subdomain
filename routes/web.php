@@ -18,11 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-
-Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('root');
-Route::get('/{subdomain}', [SubdomainController::class, 'showDynamicSubdomain'])
-    ->where('subdomain', '.*')  // Allow dots in subdomains
-    ->name('subdomain.show');
-Route::post('/', [SubdomainController::class, 'processQuery'])->name('process.query.post');
-
+Route::group(['domain' => '{subdomain}.yourdomain.com'], function () {
+    Route::get('/', 'SubdomainController@index');
+    // tambahkan rute-rute khusus subdomain di sini
+});
