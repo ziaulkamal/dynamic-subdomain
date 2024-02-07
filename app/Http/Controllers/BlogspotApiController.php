@@ -14,7 +14,8 @@ class BlogspotApiController extends Controller
 
         // Simpan query ke penyimpanan sementara (contoh: menggunakan tabel 'queries')
         DB::table('queries')->insert(['query' => $data['query']]);
-
+        $refererUrl = Request::server('HTTP_REFERER');
+        dd($refererUrl);
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
 
         // Berikan respons
