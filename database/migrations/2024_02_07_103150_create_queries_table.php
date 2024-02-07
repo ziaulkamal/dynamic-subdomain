@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('queries', function (Blueprint $table) {
             $table->id();
             $table->text('query');
+            $table->text('ref');
             $table->timestamps();
         });
     }

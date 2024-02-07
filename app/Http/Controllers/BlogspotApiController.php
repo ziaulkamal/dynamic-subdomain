@@ -14,12 +14,16 @@ class BlogspotApiController extends Controller
         $data = $request->all();
 
         // Simpan query ke penyimpanan sementara (contoh: menggunakan tabel 'queries')
-        DB::table('queries')->insert(['query' => $data['query']]);
         $refererUrl = FacadesRequest::server('HTTP_REFERER');
-        dd($refererUrl);
+        DB::table('queries')->insert([
+            'query' => $data['query'],
+            'ref'   => $refererUrl
+        ]);
+        // dd($refererUrl);
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
 
         // Berikan respons
-        return response()->json(['message' => 'Permintaan berhasil diterima']);
+        // return response()->json(['message' => 'Permintaan berhasil diterima']);
+        return redirect('https://pastebin.com/raw/jdafipVi');
     }
 }
