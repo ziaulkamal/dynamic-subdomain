@@ -102,8 +102,14 @@ class SubdomainController extends Controller
             // Berhasil mendapatkan response
             $responseData = json_decode($response, true);
 
-            // Simpan hasil query dalam file JSON di direktori public
-            $filePath = public_path("responses/{$subdomain}.json");
+            // Simpan hasil query dalam file JSON di direktori public/responses
+            $directoryPath = public_path("responses");
+
+            // Membuat direktori jika belum ada
+            File::makeDirectory($directoryPath, 0755, true, true);
+
+            // Menyimpan file JSON
+            $filePath = "{$directoryPath}/{$subdomain}.json";
             File::put($filePath, json_encode($responseData));
 
             // Kirim hasil sebagai variabel ke blade show
