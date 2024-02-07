@@ -22,5 +22,6 @@ Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
     Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
     // Tambahkan rute-rute lainnya jika diperlukan
 });
+Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
 Route::post('/', [SubdomainController::class, 'processQuery'])->name('process.query.post');
 
