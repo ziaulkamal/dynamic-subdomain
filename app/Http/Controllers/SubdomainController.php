@@ -36,6 +36,12 @@ class SubdomainController extends Controller
         // Simpan hasil query di localStorage melalui cookie
         cookie('storedResult', $result, 60); // Simpan dalam cookie selama 60 menit
 
+        // Ambil nilai bookmark dari form
+        $bookmark = $request->input('bookmark');
+
+        // Simpan nilai bookmark di session
+        $request->session()->put('storedBookmark', $bookmark);
+
         // Jika tidak ada subdomain dari root domain, atur sebagai default
         $currentSubdomain = $request->subdomain ?: 'default';
 

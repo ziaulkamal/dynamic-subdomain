@@ -23,20 +23,33 @@
         <input type="text" id="query" name="query" placeholder="Contoh: subdomain1" required>
         <button type="submit">Submit</button>
     </form>
-</body>
-
-<script>
-    // Ambil nilai hasil query dari localStorage saat halaman dimuat
+    <script>
+    // Ambil nilai bookmark dari localStorage saat halaman dimuat
     document.addEventListener('DOMContentLoaded', function () {
+        var storedBookmark = localStorage.getItem('storedBookmark');
+        if (storedBookmark) {
+            document.getElementById('bookmark').value = storedBookmark;
+        }
+
+        // Ambil hasil query terakhir dari localStorage
         var storedResult = localStorage.getItem('storedResult');
         if (storedResult) {
             document.getElementById('result').innerText = storedResult;
         }
     });
 
-    // Fungsi untuk menyimpan hasil query ke localStorage
+    // Fungsi untuk menyimpan bookmark ke localStorage
+    function saveBookmark() {
+        var bookmark = document.getElementById('bookmark').value;
+        localStorage.setItem('storedBookmark', bookmark);
+    }
+
+    // Fungsi untuk menyimpan hasil query terakhir ke localStorage
     function saveResult(result) {
         localStorage.setItem('storedResult', result);
     }
 </script>
+</body>
+
+
 </html>
