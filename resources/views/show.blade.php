@@ -7,13 +7,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <h1>Informasi Subdomain:</h1>
-
-    @if (isset($subdomain))
-        <p>URL Sekarang: {{ url()->current() }}</p>
-    @else
-        <p>URL Sekarang: {{ url('/') }}</p>
-    @endif
 
     <!-- Tambahkan hasil query di sini -->
        <div id="resultContainer">
@@ -55,7 +48,7 @@
             dataType: 'json',
             success: function(response) {
                 // Tampilkan hasil di elemen dengan id 'resultText'
-                $('#resultText').text(response.candidates[0].content.parts[0].text);
+                $('#resultText').html(response.candidates[0].content.parts[0].text);
             },
             error: function() {
                 // Tangani kesalahan jika permintaan gagal

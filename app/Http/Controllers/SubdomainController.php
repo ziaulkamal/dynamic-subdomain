@@ -42,14 +42,15 @@ class SubdomainController extends Controller
             // Kirim hasil sebagai variabel ke blade show di subdomain
             return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
         }
-        $basePrompt = "buatkan saya artikel dengan bahasa menarik, memiliki opening dan closing, setiap awalan tag heading memiliki kalimat penjelasan 1 pargraph dan di lanjutkan dengan narasi berikutnya, dengan format ada tag <H1>,<H2>,<H3> sampai <H6>, jika memang ada list maka sesuaikan tag nya, untuk gambar gunakan tag <img> ,dan jika ada gambar terapkan ke img src sesuai dengan tautan gambar berdasarkan prompt yang saya berikan, saya ingin gambar di tambahkan unik sesuai dengan prompt, untuk peletakan gambar di setiap subheading, artikel di buat dengan panjang kata 1900 kata, prompt nya ";
+        $basePrompt = "buatkan saya artikel dengan bahasa menarik, memiliki opening dan closing, setiap awalan tag heading memiliki kalimat penjelasan 1 pargraph dan di lanjutkan dengan narasi berikutnya, dengan format ada tag <h1>,<h2>,<h3> sampai <h6>, jika memang ada list maka sesuaikan tag nya, untuk gambar gunakan tag <img> ,dan jika ada gambar terapkan ke img src sesuai dengan tautan gambar berdasarkan prompt yang saya berikan, saya ingin gambar di tambahkan unik sesuai dengan prompt, untuk peletakan gambar di setiap subheading, artikel di buat dengan panjang kata 1900 kata, prompt nya ";
+        $closePrompt = ". pastikan compatible dengan format html";
         // Jika file JSON belum ada, jalankan permintaan API
         $apiData = [
             "contents" => [
                 [
                     "parts" => [
                         [
-                            "text" => $basePrompt . $query
+                            "text" => $basePrompt . $query .$closePrompt
                         ]
                     ]
                 ]
