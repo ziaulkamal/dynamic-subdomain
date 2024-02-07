@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
     Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
-    Route::post('/subdomain/process-query', [SubdomainController::class, 'processQueryApi'])->name('subdomain.processQuery');
+    Route::post('/', [SubdomainController::class, 'processQueryApi'])->name('subdomain.processQuery');
 
     // Tambahkan rute-rute lainnya jika diperlukan
 });
