@@ -31,7 +31,7 @@ class SubdomainController extends Controller
         $request->session()->put('storedQuery', $query);
 
         // Lakukan proses query
-        $result = $this->processQueryLogic($query);
+        $result = strtoupper($query); // Contoh sederhana, mengubah menjadi huruf kapital
 
         // Simpan hasil query di localStorage melalui cookie
         cookie('storedResult', $result, 60); // Simpan dalam cookie selama 60 menit
