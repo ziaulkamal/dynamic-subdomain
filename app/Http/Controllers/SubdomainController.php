@@ -43,7 +43,7 @@ class SubdomainController extends Controller
             $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
 
             // Kirim hasil sebagai variabel ke blade show
-            return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
+            return view('show', compact('subdomain', 'text', 'query'));
         }
 
         // Jika file JSON belum ada, jalankan permintaan API
@@ -123,7 +123,7 @@ class SubdomainController extends Controller
             $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
 
             // Kirim hasil sebagai variabel ke blade show
-            return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
+            return view('show', compact('subdomain', 'text', 'query'));
         }
 
         // Tutup koneksi cURL
