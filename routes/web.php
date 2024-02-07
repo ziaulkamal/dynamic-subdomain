@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
     Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
-    Route::post('/', [SubdomainController::class, 'processQuery'])->name('process.query.post');;
+    Route::post('/', [SubdomainController::class, 'processQuery'])->name('process.query.post');
     // Tambahkan rute-rute lainnya jika diperlukan
 });
 
