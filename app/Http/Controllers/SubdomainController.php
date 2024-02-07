@@ -29,9 +29,6 @@ class SubdomainController extends Controller
         // Ganti spasi dengan tanda hubung
         $subdomain = Str::slug($query);
 
-        // Simpan nilai query di session
-        $request->session()->put('storedQuery', $query);
-
         // Persiapkan path untuk file JSON
         $jsonFilePath = public_path("responses/{$subdomain}.json");
 
@@ -42,8 +39,8 @@ class SubdomainController extends Controller
             $responseData = json_decode($jsonContent, true);
             $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
 
-            // Kirim hasil sebagai variabel ke blade show
-            return view('show', compact('subdomain', 'text', 'query'));
+            // Kirim hasil sebagai variabel ke blade show di subdomain
+            return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
         }
 
         // Jika file JSON belum ada, jalankan permintaan API
@@ -85,7 +82,7 @@ class SubdomainController extends Controller
         ];
 
         // Set API Key
-        $apiKey = "AIzaSyDxNHLoyaBLdmS5odu_oO7gSXB_cVmubU0";
+        $apiKey = "AIzaSyDxNHLoyaBLdmS5odu_oO7gSXB_cVmubU0"; // Ganti dengan API Key Anda
 
         // URL API
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" . $apiKey;
@@ -122,8 +119,8 @@ class SubdomainController extends Controller
             // Ambil teks dari hasil response
             $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
 
-            // Kirim hasil sebagai variabel ke blade show
-            return view('show', compact('subdomain', 'text', 'query'));
+            // Kirim hasil sebagai variabel ke blade show di subdomain
+            return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
         }
 
         // Tutup koneksi cURL
