@@ -14,6 +14,6 @@ class BlogspotApiController extends Controller
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
 
         // Berikan respons
-        return response()->json(['message' => 'Permintaan berhasil diterima']);
+        return response()->json(['message' => $data]);
     }
 }
