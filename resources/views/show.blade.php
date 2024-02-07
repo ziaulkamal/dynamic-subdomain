@@ -16,7 +16,7 @@
         <p>URL Sekarang: {{ url('/') }}</p>
     @endif
 
-    @if (isset($subdomain))
+    {{-- @if (isset($subdomain))
         <p><a href="{{ route('root') }}">Kembali ke Root</a></p>
     @endif
 
@@ -25,6 +25,6 @@
         <label for="query">Masukkan Query:</label>
         <input type="text" id="query" name="query" placeholder="Contoh: subdomain1" required>
         <button type="submit">Submit</button>
-    </form>
+    </form> --}}
 </body>
 </html>
