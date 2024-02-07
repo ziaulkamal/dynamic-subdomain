@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\BlogspotApiController;
 use App\Http\Controllers\SubdomainController;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -19,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
     Route::get('/', [SubdomainController::class, 'showSubdomain'])->name('subdomain.show');
+
     // Tambahkan rute-rute lainnya jika diperlukan
 });
 
