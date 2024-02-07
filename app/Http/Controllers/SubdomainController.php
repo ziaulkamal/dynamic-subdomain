@@ -18,5 +18,17 @@ class SubdomainController extends Controller
         return view('show', compact('currentSubdomain'));
     }
 
+    public function processQuery(Request $request)
+    {
+        // Ambil nilai query dari form
+        $query = $request->input('query');
+
+        // Ganti spasi dengan tanda hubung
+        $subdomain = Str::slug($query);
+
+        // Redirect ke subdomain dengan query
+        return redirect()->route('subdomain.show', ['subdomain' => $subdomain]);
+    }
+
 
 }
