@@ -15,9 +15,9 @@
     @endif
 
     <!-- Tambahkan hasil query di sini -->
-    @if (isset($responseData['generatedContent']))
+    @if (isset($text))
         <h2>Hasil Query:</h2>
-        <pre>{{ $responseData['generatedContent'] }}</pre>
+        <pre>{{ $text }}</pre>
     @else
         <p>Terjadi kesalahan dalam mendapatkan hasil dari API.</p>
     @endif
