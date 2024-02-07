@@ -11,7 +11,8 @@ $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 $queries = Query::all();
 // dd($queries->count());
 // Proses setiap query
-if ($queries->count() > 1) {
+dd($queries);
+if ($queries) {
     # code...
     foreach ($queries as $query) {
         // Lakukan sesuatu dengan query (contoh: panggil metode di SubdomainController)
