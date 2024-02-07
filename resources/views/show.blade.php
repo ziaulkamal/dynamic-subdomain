@@ -42,18 +42,23 @@
 
         function submitForm() {
         // Ambil URL lengkap dari browser
+
             var fullUrl = window.location.href;
 
             // Hapus protokol dari URL
             var urlWithoutProtocol = fullUrl.replace(/(^\w+:|^)\/\//, '');
+
+            // Ambil protokol dari URL
+            var protocol = window.location.protocol + '//';
 
             // Pisahkan URL berdasarkan titik (.)
             var urlParts = urlWithoutProtocol.split('.');
 
             // Ambil subdomain yang pertama (indeks 0)
             var subdomain = urlParts[0];
+            var rootDomain = urlParts.length > 2 ? urlParts[1] + '.' + urlParts[2] : urlParts[0];
             // Persiapkan path untuk file JSON
-            var jsonFilePath = '/responses/' + subdomain + '.json';
+            var jsonFilePath = protocol +rootDomain+'/responses/' + subdomain + '.json';
 
             // Menggunakan AJAX untuk memuat file JSON
             var xhr = new XMLHttpRequest();
