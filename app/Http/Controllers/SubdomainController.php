@@ -20,6 +20,17 @@ class SubdomainController extends Controller
         return view('show', compact('currentSubdomain'));
     }
 
+    public function processQueryApi(Request $request)
+    {
+        // Ambil data dari request
+        $data = $request->all();
+
+        // Lakukan logika bisnis atau manipulasi data sesuai kebutuhan
+
+        // Kirim respons
+        return response()->json(['message' => 'Data berhasil diterima di SubdomainController']);
+    }
+
 
     public function processQuery(Request $request)
     {

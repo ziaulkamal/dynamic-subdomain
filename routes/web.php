@@ -27,3 +27,5 @@ Route::group(['domain' => '{subdomain}.mindkreativ.com'], function () {
 
 Route::get('/', [SubdomainController::class, 'defaultRoot']);
 Route::post('/', [SubdomainController::class, 'processQuery'])->name('process.query.post');
+Route::post('/subdomain/process-query', [SubdomainController::class, 'processQueryApi'])->name('subdomain.processQuery');
+
