@@ -10,6 +10,21 @@ class BlogspotApiController extends Controller
 {
     public function handleRequest(Request $request)
     {
+
+        // code blogspot javascript
+
+        // function submitForm() {
+        //     // Ambil nilai dari input pencarian
+        //     const query = document.getElementById('queryInput').value;
+        //     const queryMin = query.replace(/ /g, '-')
+        //     // Setel nilai atribut 'action' formulir dengan URL berdasarkan query
+        //     const url = 'https://' + queryMin + '.mindkreativ.com/api/blogspot-endpoint/';
+        //     const form = document.getElementById('dynamicForm');
+        //     form.action = url;
+
+        //     // Kirim formulir
+        //     form.submit();
+        // }
         // Proses permintaan dari Blogspot
         $data = $request->all();
 
