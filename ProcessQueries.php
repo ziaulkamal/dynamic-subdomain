@@ -9,6 +9,7 @@ $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 // Ambil query dari penyimpanan sementara (contoh: menggunakan tabel 'queries')
 // $queries = DB::table('queries')->get();
 $queries = Query::all();
+dd($queries);
 // Proses setiap query
 foreach ($queries as $query) {
     // Lakukan sesuatu dengan query (contoh: panggil metode di SubdomainController)
