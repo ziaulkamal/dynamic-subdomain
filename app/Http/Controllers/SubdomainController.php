@@ -34,5 +34,9 @@ class SubdomainController extends Controller
         return redirect()->route('subdomain.show', ['subdomain' => $subdomain ?: $currentSubdomain]);
     }
 
+    function defaultRoot() {
+        return "Maintenance";
+    }
+
 
 }
