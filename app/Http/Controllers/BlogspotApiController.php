@@ -12,7 +12,7 @@ class BlogspotApiController extends Controller
         $data = $request->all();
 
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
-
+        dd($data);
         // Berikan respons
         return response()->json(['message' => $data]);
     }
