@@ -18,7 +18,7 @@
     <!-- Tambahkan hasil query di sini -->
        <div id="resultContainer">
         <h2>Hasil Query:</h2>
-        <pre id="resultText"></pre>
+        <div id="resultText"></div>
     </div>
 
     <form action="{{ route('process.query.post') }}" method="POST">
