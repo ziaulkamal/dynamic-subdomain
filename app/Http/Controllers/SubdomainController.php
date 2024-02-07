@@ -101,8 +101,9 @@ class SubdomainController extends Controller
             // Berhasil mendapatkan response
             $responseData = json_decode($response, true);
 
-            // Simpan hasil query di localStorage melalui cookie
-            // cookie('storedResult', $responseData['generatedContent'], 60); // Simpan dalam cookie selama 60 menit
+            // Simpan hasil query dalam file JSON di direktori public
+            $filePath = public_path("responses/{$subdomain}.json");
+            File::put($filePath, json_encode($responseData));
 
             // Kirim hasil sebagai variabel ke blade show
             return view('show', compact('subdomain', 'responseData', 'query'));
