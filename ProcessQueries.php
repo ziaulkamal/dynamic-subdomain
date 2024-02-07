@@ -109,7 +109,7 @@ foreach ($queries as $query) {
         $request->session()->put('storedBookmark', $bookmark);
 
         // Jika tidak ada subdomain dari root domain, atur sebagai default
-        $currentSubdomain = $request->subdomain ?: 'default';
+        // $currentSubdomain = ->subdomain ?: 'default';
 
     // Hapus query dari penyimpanan sementara
         DB::table('queries')->where('id', $query->id)->delete();
