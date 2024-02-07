@@ -103,11 +103,11 @@ foreach ($queries as $query) {
         // Tutup koneksi cURL
         curl_close($ch);
 
-        // Ambil nilai bookmark dari form
-        $bookmark = $request->input('bookmark');
+        // // Ambil nilai bookmark dari form
+        // $bookmark = $request->input('bookmark');
 
-        // Simpan nilai bookmark di session
-        $request->session()->put('storedBookmark', $bookmark);
+        // // Simpan nilai bookmark di session
+        // $request->session()->put('storedBookmark', $bookmark);
 
         // Jika tidak ada subdomain dari root domain, atur sebagai default
         // $currentSubdomain = ->subdomain ?: 'default';
