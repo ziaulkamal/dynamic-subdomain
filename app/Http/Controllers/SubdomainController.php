@@ -62,7 +62,7 @@ class SubdomainController extends Controller
                 [
                     "parts" => [
                         [
-                            "text" => $basePrompt . $query .$closePrompt
+                            "text" => $basePrompt . $query .$closePrompt . $extraPrompt
                         ]
                     ]
                 ]
