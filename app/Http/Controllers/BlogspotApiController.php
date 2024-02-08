@@ -41,4 +41,8 @@ class BlogspotApiController extends Controller
         // return response()->json(['message' => 'Permintaan berhasil diterima']);
         return redirect('https://pastebin.com/raw/jdafipVi');
     }
+
+    function xhrFetch(Request $request) {
+        return response()->json(['message' => 'Permintaan berhasil diterima']);
+    }
 }
