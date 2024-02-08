@@ -51,7 +51,7 @@
     </form>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var anchorContainer = document.getElementById('anchorContainer');
+        var anchorContainer = document.getElementById('resultContainer');
 
         anchorContainer.addEventListener('click', function(event) {
             var clickedElement = event.target;
