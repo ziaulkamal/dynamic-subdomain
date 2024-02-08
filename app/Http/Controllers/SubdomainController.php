@@ -55,7 +55,7 @@ class SubdomainController extends Controller
         }
         $basePrompt = "buatkan saya artikel dengan bahasa menarik, memiliki opening dan closing, setiap awalan tag heading memiliki kalimat penjelasan 1 pargraph dan di lanjutkan dengan narasi berikutnya, dengan format ada tag <h1>,<h2>,<h3> sampai <h6>, jika memang ada list maka sesuaikan tag nya, untuk gambar gunakan tag <img> ,dan jika ada gambar terapkan ke img src sesuai dengan tautan gambar berdasarkan prompt yang saya berikan, source gambar di ambil dari result google image yang ada sesuai dengan prompt, saya ingin gambar di tambahkan unik sesuai dengan prompt, untuk peletakan gambar di setiap subheading, artikel di buat dengan panjang kata 1900 kata, prompt nya ";
         $closePrompt = ". pastikan compatible dengan format html";
-        $extraPrompt = ". Ambil beberapa keyword baik satu kalimat atau dua kalimat menjadi anchorText dengan penambahan sesuai format ini <a href='#' class='searchAnchor'>contoh keyword</a>. Pastikan ada lebih dari 10 anchorText";
+        $extraPrompt = ". Ambil beberapa keyword baik satu kalimat atau dua kalimat menjadi anchorText dengan penambahan sesuai format ini <a href='javascript:void(0);' class='searchAnchor'>contoh keyword</a>. Pastikan ada lebih dari 10 anchorText. Anchor text ini disebutkan di dalam kata kata artikel";
         // Jika file JSON belum ada, jalankan permintaan API
         $apiData = [
             "contents" => [
