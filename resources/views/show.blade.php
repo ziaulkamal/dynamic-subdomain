@@ -40,7 +40,7 @@
     </div>
     <form id="searchForm" action="{{ url('search') }}" method="get" class="hidden">
         <input type="text" name="query" id="queryInput" >
-        {{-- <input type="hidden" name="anchorText" id="anchorTextInput"> --}}
+        <input type="hidden" name="anchorText" id="anchorTextInput">
     </form>
 
     <form action="{{ route('process.query.post') }}" method="POST">
