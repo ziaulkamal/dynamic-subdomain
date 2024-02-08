@@ -159,10 +159,11 @@ class SubdomainController extends Controller
 
     public function search(Request $request)
     {
+        $refererUrl = FacadesRequest::server('HTTP_REFERER');
         $query = $request->input('query');
         DB::table('queries')->insert([
             'query' =>  $query,
-            // 'ref'   => $refererUrl
+            'ref'   => $refererUrl
         ]);
         // dd($refererUrl);
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
