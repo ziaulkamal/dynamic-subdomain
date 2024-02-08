@@ -113,6 +113,6 @@ foreach ($queries as $query) {
         // $currentSubdomain = ->subdomain ?: 'default';
 
     // Hapus query dari penyimpanan sementara
-        DB::table('queries')->where('id', $query->id)->delete();
+        // DB::table('queries')->where('id', $query->id)->delete();
         echo 'berhasil di proses id :' . $query->id;
 }
