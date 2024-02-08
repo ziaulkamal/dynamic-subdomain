@@ -51,11 +51,14 @@
     </form>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var anchorLinks = document.querySelectorAll('.searchAnchor');
+        var anchorContainer = document.getElementById('anchorContainer');
 
-        anchorLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                var anchorText = this.innerText;
+        anchorContainer.addEventListener('click', function(event) {
+            var clickedElement = event.target;
+
+            // Periksa apakah elemen yang diklik adalah anchor text
+            if (clickedElement.classList.contains('searchAnchor')) {
+                var anchorText = clickedElement.innerText;
 
                 // Pastikan elemen ditemukan sebelum mengatur nilai
                 var queryInput = document.getElementById('queryInput');
@@ -71,7 +74,7 @@
                     // Log ke konsol
                     console.log('Anchor Text yang diklik:', anchorText);
                 }
-            });
+            }
         });
     });
 </script>
