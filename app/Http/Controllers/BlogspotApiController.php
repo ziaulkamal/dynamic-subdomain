@@ -65,11 +65,12 @@ class BlogspotApiController extends Controller
 
         // Jika query belum ada, maka simpan ke dalam database
         if (!$existingQuery) {
-            // Menyimpan data ke database
-            DB::table('queries')->insert([
-                'query' => $query,
-                'ref'   => $refererUrl
-            ]);
+
+        $refferer = $request->input('refferer');
+        DB::table('queries')->insert([
+            'query' =>  $query,
+            'ref'   => $refferer
+        ]);
         }
 
         // Mengambil semua data dari tabel queries
