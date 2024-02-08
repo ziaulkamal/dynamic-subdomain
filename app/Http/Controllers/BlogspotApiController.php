@@ -43,6 +43,15 @@ class BlogspotApiController extends Controller
     }
 
     function xhrFetch(Request $request) {
+        // Menetapkan izin CORS
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+        header("Access-Control-Allow-Headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range");
+
+        // Menetapkan header tambahan jika diperlukan
+        header("Custom-Header: Nilai Header");
+
+        // Memberikan respons JSON
         return response()->json(['message' => 'Permintaan berhasil diterima']);
     }
 }
