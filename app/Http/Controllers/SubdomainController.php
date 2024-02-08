@@ -155,5 +155,11 @@ class SubdomainController extends Controller
         return "Maintenance";
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        dd($query);
+    }
+
 
 }
