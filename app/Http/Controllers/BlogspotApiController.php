@@ -27,7 +27,7 @@ class BlogspotApiController extends Controller
         // }
         // Proses permintaan dari Blogspot
         $data = $request->all();
-        dd($data);
+
         // Simpan query ke penyimpanan sementara (contoh: menggunakan tabel 'queries')
         $refererUrl = FacadesRequest::server('HTTP_REFERER');
         DB::table('queries')->insert([

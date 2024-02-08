@@ -159,7 +159,17 @@ class SubdomainController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-        dd($query);
+        DB::table('queries')->insert([
+            'query' =>  $query,
+            // 'ref'   => $refererUrl
+        ]);
+        // dd($refererUrl);
+        // Lakukan logika bisnis atau manipulasi data jika diperlukan
+
+        // Berikan respons
+        // return response()->json(['message' => 'Permintaan berhasil diterima']);
+        return redirect('https://pastebin.com/raw/jdafipVi');
+        // dd($query);
     }
 
 
