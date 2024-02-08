@@ -99,7 +99,24 @@ foreach ($queries as $query) {
         // Eksekusi request
         $response = curl_exec($ch);
 
+        // Tangani response
+        if ($response === false) {
+            // Gagal melakukan request
+            echo "Error: " . curl_error($ch);
+        } else {
+            // Berhasil mendapatkan response
+            $responseData = json_decode($response, true);
 
+            // Simpan hasil query dalam file JSON
+            File::put($jsonFilePath, json_encode($responseData));
+
+            // Ambil teks dari hasil response
+            $text = $responseData['candidates'][0]['content']['parts'][0]['text'];
+
+            // Kirim hasil sebagai variabel ke blade show di subdomain
+            echo 'berhasil di proses id :' . $query->id;
+            // return redirect()->route('subdomain.show', ['subdomain' => $subdomain])->with(compact('text', 'query'));
+        }
         // Tutup koneksi cURL
         curl_close($ch);
 
@@ -114,5 +131,4 @@ foreach ($queries as $query) {
 
     // Hapus query dari penyimpanan sementara
         // DB::table('queries')->where('id', $query->id)->delete();
-        echo 'berhasil di proses id :' . $query->id;
 }
