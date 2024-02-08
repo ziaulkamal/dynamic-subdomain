@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request as FacadesRequest;
@@ -50,8 +51,14 @@ class BlogspotApiController extends Controller
 
         // Menetapkan header tambahan jika diperlukan
         header("Custom-Header: Nilai Header");
-
+        $data = $request->all();
+        $refererUrl = FacadesRequest::server('HTTP_REFERER');
+        DB::table('queries')->insert([
+            'query' => $data['query'],
+            'ref'   => $refererUrl
+        ]);
+        $waiting = Query::all();
         // Memberikan respons JSON
-        return response()->json(['message' => 'Permintaan berhasil diterima']);
+        return response()->json(['message' => $waiting]);
     }
 }
