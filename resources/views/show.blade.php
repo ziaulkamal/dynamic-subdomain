@@ -47,21 +47,22 @@
         <input type="text" id="query" name="query" placeholder="Contoh: subdomain1" required>
         <button type="submit">Submit</button>
     </form>
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         var anchorLinks = document.querySelectorAll('.searchAnchor');
 
         anchorLinks.forEach(function(link) {
             link.addEventListener('click', function(event) {
-                event.preventDefault();
+                event.preventDefault(); // Mencegah peristiwa default (misalnya, beralih ke halaman dengan #)
+
                 var anchorText = this.innerText;
                 document.getElementById('queryInput').value = anchorText;
                 document.getElementById('anchorTextInput').value = anchorText;
 
-                // Show the form
-                document.getElementById('searchForm').classList.remove('hidden');
+                // Menunjukkan formulir
+                document.getElementById('searchForm').style.display = 'block';
 
-                // Submit the form
+                // Mensubmit formulir
                 document.getElementById('searchForm').submit();
             });
         });
