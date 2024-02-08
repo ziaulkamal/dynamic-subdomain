@@ -51,14 +51,31 @@ class BlogspotApiController extends Controller
 
         // Menetapkan header tambahan jika diperlukan
         header("Custom-Header: Nilai Header");
+        // Mengambil data dari request
         $data = $request->all();
-        $refererUrl = FacadesRequest::server('HTTP_REFERER');
-        DB::table('queries')->insert([
-            'query' => $data['query'],
-            'ref'   => $refererUrl
-        ]);
+
+        // Mengganti karakter '-' dengan spasi
+        $query = str_replace('-', ' ', $data['query']);
+
+        // Mendapatkan URL referer
+        $refererUrl = $request->server('HTTP_REFERER');
+
+        // Memeriksa apakah query sudah ada di tabel
+        $existingQuery = Query::where('query', $query)->first();
+
+        // Jika query belum ada, maka simpan ke dalam database
+        if (!$existingQuery) {
+            // Menyimpan data ke database
+            DB::table('queries')->insert([
+                'query' => $query,
+                'ref'   => $refererUrl
+            ]);
+        }
+
+        // Mengambil semua data dari tabel queries
         $waiting = Query::all();
-        // Memberikan respons JSON
-        return response()->json(['message' => $waiting]);
+
+        // Mengembalikan semua data sebagai respons JSON
+        return response()->json(['data' => $waiting]);
     }
 }
