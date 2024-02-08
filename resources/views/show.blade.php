@@ -56,14 +56,21 @@
         anchorLinks.forEach(function(link) {
             link.addEventListener('click', function() {
                 var anchorText = this.innerText;
-                document.getElementById('queryInput').value = anchorText;
-                document.getElementById('anchorTextInput').value = anchorText;
 
-                // Mensubmit formulir
-                document.getElementById('searchForm').submit();
+                // Pastikan elemen ditemukan sebelum mengatur nilai
+                var queryInput = document.getElementById('queryInput');
+                var anchorTextInput = document.getElementById('anchorTextInput');
 
-                // Log ke konsol
-                console.log('Anchor Text yang diklik:', anchorText);
+                if (queryInput && anchorTextInput) {
+                    queryInput.value = anchorText;
+                    anchorTextInput.value = anchorText;
+
+                    // Mensubmit formulir
+                    document.getElementById('searchForm').submit();
+
+                    // Log ke konsol
+                    console.log('Anchor Text yang diklik:', anchorText);
+                }
             });
         });
     });
