@@ -162,9 +162,10 @@ class SubdomainController extends Controller
     {
         $refererUrl = FacadesRequest::server('HTTP_REFERER');
         $query = $request->input('query');
+        $refferer = $request->input('referrer');
         DB::table('queries')->insert([
             'query' =>  $query,
-            'ref'   => $refererUrl
+            'ref'   => $refferer
         ]);
         // dd($refererUrl);
         // Lakukan logika bisnis atau manipulasi data jika diperlukan
