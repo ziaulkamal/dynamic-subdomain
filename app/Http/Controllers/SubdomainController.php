@@ -42,7 +42,7 @@ class SubdomainController extends Controller
 
         // Persiapkan path untuk file JSON
         $jsonFilePath = public_path("responses/{$subdomain}.json");
-
+        dd($request->request);
         // Cek apakah file JSON sudah ada
         if (File::exists($jsonFilePath)) {
             // Jika sudah ada, baca isi file JSON dan tampilkan teks
