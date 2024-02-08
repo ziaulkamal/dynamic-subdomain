@@ -48,25 +48,25 @@
         <button type="submit">Submit</button>
     </form>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var anchorLinks = document.querySelectorAll('.searchAnchor');
+    document.addEventListener('DOMContentLoaded', function() {
+        var anchorLinks = document.querySelectorAll('.searchAnchor');
 
-            anchorLinks.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    var anchorText = this.innerText;
-                    document.getElementById('queryInput').value = anchorText;
-                    document.getElementById('anchorTextInput').value = anchorText;
+        anchorLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                var anchorText = this.innerText;
+                document.getElementById('queryInput').value = anchorText;
+                document.getElementById('anchorTextInput').value = anchorText;
 
-                    // Menunjukkan formulir
-                    document.getElementById('searchForm').classList.remove('hidden');
+                // Show the form
+                document.getElementById('searchForm').classList.remove('hidden');
 
-                    // Opsional: Fokuskan pada input pencarian setelah menunjukkan formulir
-                    document.getElementById('queryInput').focus();
-                });
+                // Submit the form
+                document.getElementById('searchForm').submit();
             });
         });
-    </script>
+    });
+</script>
 
     <script>
         var fullUrl = window.location.href;
