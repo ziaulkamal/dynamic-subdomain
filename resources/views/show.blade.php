@@ -38,9 +38,9 @@
         <a href="javascript:void(0);" class="searchAnchor">Uji coba direct</a>
 
     </div>
-    <form id="searchForm" action="{{ url('//free.mindkreativ.com/search') }}" method="get" class="hidden">
-        <input type="text" name="query" id="queryInput" placeholder="Cari...">
-        <input type="hidden" name="anchorText" id="anchorTextInput">
+    <form id="searchForm" action="{{ url('search') }}" method="get" class="hidden">
+        <input type="text" name="query" id="queryInput" >
+        {{-- <input type="hidden" name="anchorText" id="anchorTextInput"> --}}
     </form>
 
     <form action="{{ route('process.query.post') }}" method="POST">
